@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReachFlow | Campaign Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">R</div>
+            <span>reach<span class="logo-light">flow</span></span>
+        </div>
+
+        <div class="workspace">
+            <div class="workspace-avatar">N</div>
+            <div>
+                <strong>My Workspace</strong>
+                <small>Demo Account</small>
+            </div>
+            <span class="dots">•••</span>
+        </div>
+
+        <p class="nav-label">WORKSPACE</p>
+        <nav>
+            <a class="nav-item active" href="#dashboard">
+                <span>◫</span> Overview
+            </a>
+            <a class="nav-item" href="#contacts">
+                <span>♧</span> Contacts
+                <span class="nav-count" id="sideContactCount">0</span>
+            </a>
+            <a class="nav-item" href="#campaigns">
+                <span>✉</span> Campaigns
+            </a>
+        </nav>
+
+        <p class="nav-label second-label">MANAGE</p>
+        <nav>
+            <a class="nav-item" href="#history">
+                <span>◷</span> Campaign History
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="help-box">
+                <div class="help-icon">✦</div>
+                <strong>Need a hand?</strong>
+                <p>Manage your campaigns with ease.</p>
+                <button onclick="showToast('Welcome to ReachFlow support!')">Get Help ↗</button>
+            </div>
+            <div class="profile">
+                <div class="profile-avatar">N</div>
+                <div>
+                    <strong>Nancy</strong>
+                    <small>Administrator</small>
+                </div>
+                <span class="dots">•••</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div class="breadcrumb">Workspace <span>/</span> Overview</div>
+            <div class="top-actions">
+                <span class="demo-tag"><i></i> DEMO ENVIRONMENT</span>
+                <button class="icon-button" title="Notifications">♧</button>
+                <div class="top-avatar">N</div>
+            </div>
+        </header>
+
+        <section id="dashboard" class="page-section">
+            <div class="welcome-row">
+                <div>
+                    <p class="eyebrow">MONDAY, YOUR BUSINESS AT A GLANCE</p>
+                    <h1>Good afternoon, Nancy <span>✦</span></h1>
+                    <p class="subtitle">Here's what's happening with your messaging today.</p>
+                </div>
+                <button class="primary-btn" onclick="goToCampaigns()">＋ Create Campaign</button>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Total Contacts</span>
+                        <div class="stat-icon purple">♧</div>
+                    </div>
+                    <h2 id="totalContacts">0</h2>
+                    <p><span class="positive">●</span> Your audience database</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Campaigns Created</span>
+                        <div class="stat-icon blue">✉</div>
+                    </div>
+                    <h2 id="totalCampaigns">0</h2>
+                    <p>All campaigns in this demo</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Opted-in Contacts</span>
+                        <div class="stat-icon green">✓</div>
+                    </div>
+                    <h2 id="eligibleContacts">0</h2>
+                    <p>Eligible audience</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Available Channels</span>
+                        <div class="stat-icon orange">◉</div>
+                    </div>
+                    <h2>02</h2>
+                    <p>WhatsApp & SMS</p>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="content-card">
+                    <div class="card-heading">
+                        <div>
+                            <h3>Quick Actions</h3>
+                            <p>Everything you need, one click away.</p>
+                        </div>
+                    </div>
+
+                    <div class="quick-grid">
+                        <button class="quick-action" onclick="goToContacts()">
+                            <div class="quick-icon purple">♧</div>
+                            <strong>Add Contacts</strong>
+                            <small>Grow your audience</small>
+                            <span>→</span>
+                        </button>
+
+                        <button class="quick-action" onclick="goToCampaigns()">
+                            <div class="quick-icon green">✉</div>
+                            <strong>New Campaign</strong>
+                            <small>Prepare a message</small>
+                            <span>→</span>
+                        </button>
+
+                        <button class="quick-action" onclick="downloadSample()">
+                            <div class="quick-icon orange">↓</div>
+                            <strong>Sample CSV</strong>
+                            <small>Download template</small>
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="content-card overview-card">
+                    <div class="card-heading">
+                        <div>
+                            <h3>Channel Overview</h3>
+                            <p>Available messaging channels</p>
+                        </div>
+                    </div>
+                    <div class="channel-row">
+                        <div class="channel-logo whatsapp">W</div>
+                        <div class="channel-info"><strong>WhatsApp</strong><small>Business messaging</small></div>
+                        <span class="channel-status">Demo</span>
+                    </div>
+                    <div class="channel-row">
+                        <div class="channel-logo sms">S</div>
+                        <div class="channel-info"><strong>SMS Marketing</strong><small>Text message campaigns</small></div>
+                        <span class="channel-status">Demo</span>
+                    </div>
+                    <div class="info-note">ⓘ Connect a messaging provider to enable real delivery.</div>
+                </div>
+            </div>
+
+            <div class="content-card recent-card">
+                <div class="card-heading">
+                    <div>
+                        <h3>Recent Campaigns</h3>
+                        <p>Your latest campaign activity.</p>
+                    </div>
+                    <button class="text-btn" onclick="goToHistory()">View all →</button>
+                </div>
+                <div id="dashboardHistory" class="empty-state">No campaigns yet. Create your first campaign!</div>
+            </div>
+        </section>
+
+        <!-- CONTACTS -->
+        <section id="contacts" class="page-section">
+            <div class="page-heading">
+                <div>
+                    <p class="eyebrow">AUDIENCE MANAGEMENT</p>
+                    <h1>Your Contacts</h1>
+                    <p class="subtitle">Import, organize and manage your customer database.</p>
+                </div>
+                <button class="primary-btn" onclick="document.getElementById('csvFile').click()">↑ Import CSV</button>
+            </div>
+
+            <div class="contact-summary">
+                <div><small>All Contacts</small><strong id="contactTotal">0</strong></div>
+                <div><small>Opted In</small><strong id="contactOpted">0</strong></div>
+                <div><small>Not Opted In</small><strong id="contactNotOpted">0</strong></div>
+            </div>
+
+            <div class="content-card">
+                <div class="card-heading">
+                    <div>
+                        <h3>Contact Database</h3>
+                        <p>Manage your customer information.</p>
+                    </div>
+                    <button class="secondary-btn" onclick="downloadSample()">↓ Sample CSV</button>
+                </div>
+
+                <div class="import-zone" onclick="document.getElementById('csvFile').click()">
+                    <div class="upload-symbol">↑</div>
+                    <strong>Drop your CSV file here or <span>browse</span></strong>
+                    <small>CSV format · Name, Mobile, Consent</small>
+                    <input type="file" id="csvFile" accept=".csv" hidden>
+                </div>
+
+                <div class="manual-add">
+                    <h3>Add Contact Manually</h3>
+                    <div class="form-row">
+                        <input id="newName" placeholder="Customer name">
+                        <input id="newMobile" placeholder="Mobile number">
+                        <select id="newConsent">
+                            <option value="Yes">Opted In</option>
+                            <option value="No">Not Opted In</option>
+                        </select>
+                        <button class="primary-btn" onclick="addManualContact()">＋ Add</button>
+                    </div>
+                </div>
+
+                <div id="importStatus" class="status-message"></div>
+
+                <div class="table-toolbar">
+                    <input type="search" id="searchContacts" placeholder="⌕ Search contacts...">
+                    <select id="consentFilter">
+                        <option value="all">All Contacts</option>
+                        <option value="Yes">Opted In</option>
+                        <option value="No">Not Opted In</option>
+                    </select>
+                    <button class="secondary-btn" onclick="clearContacts()">Clear All</button>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>CONTACT</th><th>MOBILE NUMBER</th><th>CONSENT</th><th>ACTION</th></tr>
+                        </thead>
+                        <tbody id="contactRows"></tbody>
+                    </table>
+                    <div id="contactEmpty" class="empty-state">No contacts found. Upload a CSV or add a contact.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CAMPAIGNS -->
+        <section id="campaigns" class="page-section">
+            <div class="page-heading">
+                <div>
+                    <p class="eyebrow">MESSAGE CENTER</p>
+                    <h1>Create Campaign</h1>
+                    <p class="subtitle">Build a message and prepare your next campaign.</p>
+                </div>
+            </div>
+
+            <div class="campaign-layout">
+                <div class="content-card">
+                    <div class="card-heading">
+                        <div><h3>Campaign Details</h3><p>Set up your messaging campaign.</p></div>
+                        <span class="step-tag">STEP 01</span>
+                    </div>
+
+                    <label class="form-label">Campaign Name</label>
+                    <input class="full-input" id="campaignName" value="Weekend Special Offer">
+
+                    <label class="form-label">Choose Messaging Channel</label>
+                    <div class="channel-options">
+                        <button class="channel-option selected" data-channel="WhatsApp" onclick="selectChannel(this)">
+                            <span class="channel-logo whatsapp">W</span>
+                            <span><strong>WhatsApp</strong><small>WhatsApp Business</small></span>
+                            <b>✓</b>
+                        </button>
+                        <button class="channel-option" data-channel="SMS" onclick="selectChannel(this)">
+                            <span class="channel-logo sms">S</span>
+                            <span><strong>SMS</strong><small>Text messaging</small></span>
+                            <b>✓</b>
+                        </button>
+                    </div>
+
+                    <label class="form-label">Select Audience</label>
+                    <select class="full-input" id="campaignAudience">
+                        <option value="all">All opted-in contacts</option>
+                    </select>
+                    <p class="field-hint" id="eligibleCount">0 eligible contacts</p>
+
+                    <label class="form-label">Your Message</label>
+                    <textarea class="full-input message-area" id="campaignMessage">Hi {{name}}! We have an exciting special offer for you. Reply INFO to know more. Thank you!</textarea>
+                    <p class="field-hint">Use <b>{{name}}</b> to personalize your message.</p>
+
+                    <label class="confirm-check">
+                        <input type="checkbox" id="campaignConsent">
+                        I confirm that this campaign is intended for opted-in contacts only.
+                    </label>
+
+                    <button class="primary-btn full-button" onclick="createCampaign()">Prepare Campaign →</button>
+                    <div id="campaignResult" class="status-message"></div>
+                </div>
+
+                <div class="content-card preview-card">
+                    <div class="card-heading">
+                        <div><h3>Live Preview</h3><p>See how your message will look.</p></div>
+                        <span class="live-tag"><i></i> LIVE</span>
+                    </div>
+
+                    <div class="phone">
+                        <div class="phone-top"><span>9:41</span><span>●●● ▰</span></div>
+                        <div class="phone-header">
+                            <span>‹</span>
+                            <div class="phone-avatar">R</div>
+                            <div><strong id="phoneChannel">ReachFlow Business</strong><small>Business account</small></div>
+                        </div>
+                        <div class="phone-chat">
+                            <div class="chat-date">TODAY</div>
+                            <div class="message-bubble" id="messagePreview"></div>
+                            <small class="message-time">Now ✓✓</small>
+                        </div>
+                        <div class="phone-input">Message <span>☺　＋</span></div>
+                    </div>
+                    <div class="preview-footer">This is a visual preview. No message will be sent.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HISTORY -->
+        <section id="history" class="page-section">
+            <div class="page-heading">
+                <div>
+                    <p class="eyebrow">ACTIVITY CENTER</p>
+                    <h1>Campaign History</h1>
+                    <p class="subtitle">Review campaigns prepared in this demo.</p>
+                </div>
+            </div>
+            <div class="content-card">
+                <div class="card-heading"><div><h3>All Campaigns</h3><p>Your campaign records.</p></div></div>
+                <div id="historyList" class="empty-state">No campaign activity yet.</div>
+            </div>
+        </section>
+
+        <footer>© 2026 ReachFlow · Messaging made simple <span>DEMO VERSION</span></footer>
+    </main>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
